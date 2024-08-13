@@ -1,0 +1,26 @@
+#container {
+    width: 425px;
+    height: 530px;
+}
+
+#buttons {
+    display: flex;
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+}
+
+#numbersAndFunc {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+#zero {
+    flex: 1;
+}
