@@ -1,26 +1,49 @@
 #container {
     width: 425px;
     height: 530px;
+    display: flex;
+    flex-direction: column;
 }
 
 #buttons {
+    flex: 1;
+    display: flex;
+}
+
+#display {
+    flex: 1;
     display: flex;
 }
 
 #operators {
     display: flex;
     flex-direction: column;
+    flex: 1;
+}
+
+.operator {
+    flex: 1;
 }
 
 #numbersAndFunc {
     display: flex;
     flex-direction: column;
+    flex: 3;
 }
 
 .row {
     display: flex;
+    flex: 1;
 }
 
 #zero {
+    flex: 2;
+}
+
+.clear {
+    flex: 1;
+}
+
+.number {
     flex: 1;
 }
