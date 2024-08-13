@@ -14,3 +14,20 @@ function divide(a, b) {
     if (b == 0) return 'lol'
     else return a / b
 }
+
+function operate(a, b, op) {
+    switch (op) {
+        case '+' :
+            add(a, b);
+            break;
+        case '-' :
+            subtract(a, b);
+            break;
+        case '*' :
+            multiply(a, b);
+            break;
+        case '/' :
+            divide(a, b);
+            break;
+    }
+}
