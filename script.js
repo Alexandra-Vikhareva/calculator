@@ -35,17 +35,24 @@ function operate(a, b, op) {
 let fisrtNum,
     secondNum,
     op;
+let isTapping = true;
 
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('#display');
+const operators = document.querySelectorAll('.operator');
+
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        if (display.textContent.length <= 8){
+        if (isTapping) {
+            display.textContent = number.textContent
+            isTapping = false;
+        }
+        else if (display.textContent.length <= 8){
             display.textContent += number.textContent}
         })
 })
 
-const operators = document.querySelectorAll('.operator');
+
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
         if (operator.textContent == '=') {
@@ -64,8 +71,7 @@ operators.forEach((operator) => {
                 fisrtNum = display.textContent;
             }
             op = operator.textContent;
-            display.textContent = ''
         }
-
+        isTapping = true;
     })
 })
