@@ -65,7 +65,7 @@ function writeNumber(reference) {
 };
 
 function doMathFunctions(reference) {
-    if (reference == '=') {
+    if (reference == '=' || reference == 'Enter') {
         secondNum = display.textContent;
         display.textContent = operate(fisrtNum, secondNum, op);
         fisrtNum = undefined;
