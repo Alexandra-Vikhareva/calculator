@@ -1,3 +1,15 @@
+let fisrtNum,
+    secondNum,
+    op;
+let isTapping = true;
+
+const numbers = document.querySelectorAll('.number');
+const display = document.querySelector('#display');
+const operators = document.querySelectorAll('.operator');
+const dot = document.querySelector('#dot');
+const clear = document.querySelector('#clear');
+const back = document.querySelector('#back');
+
 function add(a, b) {
     return Number(a) + Number(b)
 }
@@ -32,17 +44,7 @@ function operate(a, b, op) {
     }
 }
 
-let fisrtNum,
-    secondNum,
-    op;
-let isTapping = true;
 
-const numbers = document.querySelectorAll('.number');
-const display = document.querySelector('#display');
-const operators = document.querySelectorAll('.operator');
-const dot = document.querySelector('#dot');
-const clear = document.querySelector('#clear');
-const back = document.querySelector('#back');
 
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
