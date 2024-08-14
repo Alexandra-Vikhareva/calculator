@@ -28,20 +28,31 @@ function divide(a, b) {
 }
 
 function operate(a, b, op) {
+    let res;
     switch (op) {
         case '+' :
-            return add(a, b);
-
+            res = add(a, b);
+            break
         case '-' :
-            return subtract(a, b);
-
+            res = subtract(a, b);
+            break
         case '*' :
-            return multiply(a, b);
-
+            res = multiply(a, b);
+            break
         case '/' :
-            return divide(a, b);
+            res = divide(a, b);
+            break
+    };
 
+    let n = String(Math.floor(res)).length
+
+    if (n > 9) {
+        return NaN
+    } 
+    else if (String(res).length > 9) {
+        return (Math.round(res * 10 ** (8 - n))) / 10 ** (8 - n)
     }
+    return res
 }
 
 
