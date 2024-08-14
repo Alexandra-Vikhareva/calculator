@@ -1,49 +1,53 @@
 #container {
-    width: 425px;
-    height: 530px;
+    margin: 50px auto;
+    width: 370px;
+    height: 550px;
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: gray;
 }
 
 #buttons {
-    flex: 1;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+}
+
+button {
+    height: 90px;
+    flex: 0 1 90px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 3em;
 }
 
 #display {
+    font-family: monospace;
+    margin: 5px;
+    background-color: cadetblue;
+    border-radius: 5px;
     flex: 1;
-    display: flex;
-}
-
-#operators {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    text-align: end;
+    border: 2px solid teal;
+    font-size: 5em;
 }
 
 .operator {
-    flex: 1;
-}
-
-#numbersAndFunc {
-    display: flex;
-    flex-direction: column;
-    flex: 3;
-}
-
-.row {
-    display: flex;
-    flex: 1;
+    background-color: chocolate;
 }
 
 #zero {
-    flex: 2;
+    flex-basis: 180px;
 }
 
 .clear {
-    flex: 1;
+    flex-basis: 270px;
+    background-color: chocolate;
 }
 
 .number {
-    flex: 1;
+    background-color: blanchedalmond;
 }
