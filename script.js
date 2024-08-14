@@ -42,6 +42,7 @@ const display = document.querySelector('#display');
 const operators = document.querySelectorAll('.operator');
 const dot = document.querySelector('#dot');
 const clear = document.querySelector('#clear');
+const back = document.querySelector('#back');
 
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
@@ -91,4 +92,10 @@ clear.addEventListener('click', () => {
     op = undefined;
     isTapping = true;
     display.textContent = '0';
+})
+
+back.addEventListener('click', () => {
+    if (display.textContent != '') {
+        display.textContent = display.textContent.slice(0,-1);
+    }
 })
