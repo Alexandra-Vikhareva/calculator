@@ -109,7 +109,61 @@ clear.addEventListener('click', () => {
 })
 
 back.addEventListener('click', () => {
-    if (display.textContent != '') {
+    if (display.textContent.length >= 2) {
         display.textContent = display.textContent.slice(0,-1);
+    }
+    else {
+        display.textContent = 0;
+        isTapping = true;
+    }
+})
+
+document.addEventListener('keyup', (e) => {
+    if (!isNaN(e.key)) {
+        if (isTapping) {
+            display.textContent = e.key
+            isTapping = false;
+        }
+        else if (display.textContent.length <= 8){
+            display.textContent += e.key}
+    }
+
+    if ('+-*/'.includes(e.key) || (e.key == 'Enter')) {
+        if (e.key == 'Enter') {
+            secondNum = display.textContent;
+            display.textContent = operate(fisrtNum, secondNum, op);
+            fisrtNum = undefined;
+            secondNum = undefined;
+            op = undefined;
+        }
+        else {
+            if (fisrtNum) {
+                secondNum = display.textContent;
+                fisrtNum = operate(fisrtNum, secondNum, op);
+                display.textContent = fisrtNum;
+            }
+            else {
+                fisrtNum = display.textContent;
+            }
+            op = e.key;
+        }
+        isTapping = true;
+    }
+
+    if (e.key == 'Backspace') {
+        if (display.textContent.length >= 2) {
+            display.textContent = display.textContent.slice(0,-1);
+        }
+        else {
+            display.textContent = 0;
+            isTapping = true;
+        }
+    }
+
+    if (e.key == '.') {
+        if (!display.textContent.includes('.')) {
+            display.textContent += dot.textContent
+            isTapping = false;
+        }
     }
 })
