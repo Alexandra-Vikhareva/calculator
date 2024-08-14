@@ -69,6 +69,7 @@ operators.forEach((operator) => {
             if (fisrtNum) {
                 secondNum = display.textContent;
                 fisrtNum = operate(fisrtNum, secondNum, op);
+                display.textContent = fisrtNum;
             }
             else {
                 fisrtNum = display.textContent;
