@@ -1,5 +1,5 @@
 function add(a, b) {
-    return a + b
+    return Number(a) + Number(b)
 }
 
 function subtract(a, b) {
@@ -18,19 +18,23 @@ function divide(a, b) {
 function operate(a, b, op) {
     switch (op) {
         case '+' :
-            add(a, b);
-            break;
+            return add(a, b);
+
         case '-' :
-            subtract(a, b);
-            break;
+            return subtract(a, b);
+
         case '*' :
-            multiply(a, b);
-            break;
+            return multiply(a, b);
+
         case '/' :
-            divide(a, b);
-            break;
+            return divide(a, b);
+
     }
 }
+
+let fisrtNum,
+    secondNum,
+    op;
 
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('#display');
@@ -39,5 +43,29 @@ numbers.forEach((number) => {
         if (display.textContent.length <= 8){
             display.textContent += number.textContent}
         })
-        
+})
+
+const operators = document.querySelectorAll('.operator');
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        if (operator.textContent == '=') {
+            secondNum = display.textContent;
+            display.textContent = operate(fisrtNum, secondNum, op);
+            fisrtNum = undefined;
+            secondNum = undefined;
+            op = undefined;
+        }
+        else {
+            if (fisrtNum) {
+                secondNum = display.textContent;
+                fisrtNum = operate(fisrtNum, secondNum, op);
+            }
+            else {
+                fisrtNum = display.textContent;
+            }
+            op = operator.textContent;
+            display.textContent = ''
+        }
+
+    })
 })
