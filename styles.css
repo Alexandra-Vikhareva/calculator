@@ -43,7 +43,7 @@ button {
     flex-basis: 180px;
 }
 
-.clear {
+#clear {
     flex-basis: 270px;
     background-color: chocolate;
 }
