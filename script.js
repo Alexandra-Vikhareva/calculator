@@ -55,60 +55,46 @@ function operate(a, b, op) {
     return res
 }
 
-
-
-numbers.forEach((number) => {
-    number.addEventListener('click', () => {
-        if (isTapping) {
-            display.textContent = number.textContent
-            isTapping = false;
-        }
-        else if (display.textContent.length <= 8){
-            display.textContent += number.textContent}
-        })
-})
-
-
-operators.forEach((operator) => {
-    operator.addEventListener('click', () => {
-        if (operator.textContent == '=') {
-            secondNum = display.textContent;
-            display.textContent = operate(fisrtNum, secondNum, op);
-            fisrtNum = undefined;
-            secondNum = undefined;
-            op = undefined;
-        }
-        else {
-            if (fisrtNum) {
-                secondNum = display.textContent;
-                fisrtNum = operate(fisrtNum, secondNum, op);
-                display.textContent = fisrtNum;
-            }
-            else {
-                fisrtNum = display.textContent;
-            }
-            op = operator.textContent;
-        }
-        isTapping = true;
-    })
-})
-
-dot.addEventListener('click', () => {
-    if (!display.textContent.includes('.')) {
-        display.textContent += dot.textContent
+function writeNumber(reference) {
+    if (isTapping) {
+        display.textContent = reference
         isTapping = false;
     }
-})
+    else if (display.textContent.length <= 8){
+        display.textContent += reference}
+};
 
-clear.addEventListener('click', () => {
+function doMathFunctions(reference) {
+    if (reference == '=') {
+        secondNum = display.textContent;
+        display.textContent = operate(fisrtNum, secondNum, op);
+        fisrtNum = undefined;
+        secondNum = undefined;
+        op = undefined;
+    }
+    else {
+        if (fisrtNum) {
+            secondNum = display.textContent;
+            fisrtNum = operate(fisrtNum, secondNum, op);
+            display.textContent = fisrtNum;
+        }
+        else {
+            fisrtNum = display.textContent;
+        }
+        op = reference;
+    }
+    isTapping = true;
+}
+
+function clearDisplay() {
     fisrtNum = undefined;
     secondNum = undefined;
     op = undefined;
     isTapping = true;
     display.textContent = '0';
-})
+}
 
-back.addEventListener('click', () => {
+function backspace() {
     if (display.textContent.length >= 2) {
         display.textContent = display.textContent.slice(0,-1);
     }
@@ -116,54 +102,50 @@ back.addEventListener('click', () => {
         display.textContent = 0;
         isTapping = true;
     }
+}
+
+function writeDot(){
+    if (!display.textContent.includes('.')) {
+        display.textContent += dot.textContent
+        isTapping = false;
+    }
+}
+
+numbers.forEach((number) => {
+    number.addEventListener('click', () => {writeNumber(number.textContent)})
+})
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {doMathFunctions(operator.textContent)})
+})
+
+clear.addEventListener('click', () => {
+    clearDisplay();
+})
+
+back.addEventListener('click', () => {
+    backspace();
+})
+
+dot.addEventListener('click', () => {
+    writeDot();
 })
 
 document.addEventListener('keyup', (e) => {
+
     if (!isNaN(e.key)) {
-        if (isTapping) {
-            display.textContent = e.key
-            isTapping = false;
-        }
-        else if (display.textContent.length <= 8){
-            display.textContent += e.key}
+        writeNumber(e.key);
     }
 
     if ('+-*/'.includes(e.key) || (e.key == 'Enter')) {
-        if (e.key == 'Enter') {
-            secondNum = display.textContent;
-            display.textContent = operate(fisrtNum, secondNum, op);
-            fisrtNum = undefined;
-            secondNum = undefined;
-            op = undefined;
-        }
-        else {
-            if (fisrtNum) {
-                secondNum = display.textContent;
-                fisrtNum = operate(fisrtNum, secondNum, op);
-                display.textContent = fisrtNum;
-            }
-            else {
-                fisrtNum = display.textContent;
-            }
-            op = e.key;
-        }
-        isTapping = true;
+        doMathFunctions(e.key);
     }
 
     if (e.key == 'Backspace') {
-        if (display.textContent.length >= 2) {
-            display.textContent = display.textContent.slice(0,-1);
-        }
-        else {
-            display.textContent = 0;
-            isTapping = true;
-        }
+        backspace();
     }
 
     if (e.key == '.') {
-        if (!display.textContent.includes('.')) {
-            display.textContent += dot.textContent
-            isTapping = false;
-        }
+        writeDot();
     }
 })
