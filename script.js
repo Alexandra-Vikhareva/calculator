@@ -31,3 +31,13 @@ function operate(a, b, op) {
             break;
     }
 }
+
+const numbers = document.querySelectorAll('.number');
+const display = document.querySelector('#display');
+numbers.forEach((number) => {
+    number.addEventListener('click', () => {
+        if (display.textContent.length <= 8){
+            display.textContent += number.textContent}
+        })
+        
+})
