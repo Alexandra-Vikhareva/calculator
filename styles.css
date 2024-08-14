@@ -48,6 +48,7 @@ button {
     background-color: chocolate;
 }
 
-.number {
+.number,
+#dot {
     background-color: blanchedalmond;
 }

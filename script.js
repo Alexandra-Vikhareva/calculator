@@ -40,6 +40,7 @@ let isTapping = true;
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('#display');
 const operators = document.querySelectorAll('.operator');
+const dot = document.querySelector('#dot')
 
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
@@ -74,4 +75,11 @@ operators.forEach((operator) => {
         }
         isTapping = true;
     })
+})
+
+dot.addEventListener('click', () => {
+    if (!display.textContent.includes('.')) {
+        display.textContent += dot.textContent
+        isTapping = false;
+    }
 })
